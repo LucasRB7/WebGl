@@ -84,5 +84,7 @@ function sendImageURLToUnity(url) {
     }, "*");
 }
 
+setTimeout(()=>{
+    sendImageURLToUnity("https://kinsta.com/pt/wp-content/uploads/sites/3/2019/08/jpg-vs-jpeg-1024x512.jpghttps://kinsta.com/pt/wp-content/uploads/sites/3/2019/08/jpg-vs-jpeg-1024x512.jpg");
+},8000)
 // Exemplo: enviando uma URL de imagem
-sendImageURLToUnity("https://kinsta.com/pt/wp-content/uploads/sites/3/2019/08/jpg-vs-jpeg-1024x512.jpghttps://kinsta.com/pt/wp-content/uploads/sites/3/2019/08/jpg-vs-jpeg-1024x512.jpg");
