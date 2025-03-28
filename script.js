@@ -1,77 +1,40 @@
-//         var canvas = document.getElementById('unity-canvas');
-//         var unityInstance;
 
-//         function loadUnityWebGL() {
-//             var buildUrl = "https://lucasrb7.github.io/CubeTexture/Build";
-//             var loaderUrl = buildUrl + "/WebGl.loader.js";  // Ajuste para o caminho correto do seu arquivo loader.js
-//             var config = {
-//                 dataUrl: buildUrl + "/WebGl.data",
-//                 frameworkUrl: buildUrl + "/WebGl.framework.js",
-//                 codeUrl: buildUrl + "/WebGl.wasm",
-//                 //streamingAssetsUrl: "StreamingAssets",
-//                 companyName: "YourCompany",
-//                 productName: "YourGame",
-//                 productVersion: "1.0",
-//                 canvas: canvas,
-//                // memoryInitializerUrl: buildUrl + "/yourUnityBuild.mem",
-//                 webGLContextAttributes: { preserveDrawingBuffer: true, failIfMajorPerformanceCaveat: false }
-//             };
-
-//             // Instancia o Unity WebGL diretamente no canvas
-//             unityInstance = UnityLoader.instantiate("unity-canvas", loaderUrl, config);
-//         }
-
-
-// async function send(){
-//       let file = document.getElementById('file');
-//       let img = file.files[0];
+async function send(){
+      let file = document.getElementById('file');
+      let img = file.files[0];
       
 
-//       if(!img){
-//             alert('Selecione uma imagem para enviar!')
-//       }else{
+      if(!img){
+            alert('Selecione uma imagem para enviar!')
+      }else{
         
-//         const formData = new FormData();
-//         formData.append('image', img);
+        const formData = new FormData();
+        formData.append('image', img);
 
-//     try {
-//         const response = await fetch('https://api.imgbb.com/1/upload?key=18c309babaac947633eaa732474c985b', {
-//             method: 'POST',
-//             body: formData,
-//         });
+    try {
+        const response = await fetch('https://api.imgbb.com/1/upload?key=18c309babaac947633eaa732474c985b', {
+            method: 'POST',
+            body: formData,
+        });
 
-//         const data = await response.json();
+        const data = await response.json();
         
-//         if (data.status === 200) {
-//             let url = data.data.url
-//             console.log('Imagem enviada com sucesso:', url);
-//             sendTextureToUnity(url);
-//             return;
+        if (data.status === 200) {
+            let url = data.data.url
+            console.log('Imagem enviada com sucesso:', url);
+            sendImageURLToUnity(url);
+            return;
             
-//         } else {
-//             throw new Error('Falha no upload');
-//         }
-//     } catch (error) {
-//         console.error('Erro no upload:', error);
-//     }
+        } else {
+            throw new Error('Falha no upload');
+        }
+    } catch (error) {
+        console.error('Erro no upload:', error);
+    }
 
-//       }
-// }
+      }
+}
 
-// function sendTextureToUnity(imageUrl) {
-//     if (unityIframe.contentWindow) {
-//         unityIframe.contentWindow.postMessage({
-//             type: 'ChangeTexture',
-//             url: imageUrl
-//         }, '*'); // '*' pode ser substituído por um domínio específico, por segurança
-//     } else {
-//         console.error('Iframe não encontrado ou ainda não carregado.');
-//     }
-// }
-
-// window.onload = function() {
-//     loadUnityWebGL();
-// };
 
 
 function sendImageURLToUnity(url) {
@@ -83,8 +46,3 @@ function sendImageURLToUnity(url) {
         url: url
     }, "*");
 }
-
-setTimeout(()=>{
-    sendImageURLToUnity("https://i.ibb.co/p6Ynk588/Imagem-do-Whats-App-de-2025-02-18-s-10-07-46-6d9ba322.jpg");
-},15000)
-// Exemplo: enviando uma URL de imagem
