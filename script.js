@@ -85,6 +85,6 @@ function sendImageURLToUnity(url) {
 }
 
 setTimeout(()=>{
-    sendImageURLToUnity("https://raw.githubusercontent.com/LucasRB7/WebGl/refs/heads/main/image_3.jpg");
+    sendImageURLToUnity("https://i.ibb.co/p6Ynk588/Imagem-do-Whats-App-de-2025-02-18-s-10-07-46-6d9ba322.jpg");
 },15000)
 // Exemplo: enviando uma URL de imagem
